@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- 配置HandlerMapping  根据benaname找到对应Conntroller  
+	<bean
+		class="org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping"></bean>
+		 -->
+	<!-- 根据简单url 查找Controller 
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/userInfo.do">UserController</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+	
+	<!-- 控制类的类名访问Controller  访问类名首字母要小写 -->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
+
+	<bean class="com.xuejp.controller.UserController"></bean>
+	
+	<!-- 配置Controller 
+	<bean id="UserController" name="/user.do" class="com.xuejp.controller.UserController"></bean>
+	-->
+
+	<!-- 配置视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/"></property>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+</beans>
